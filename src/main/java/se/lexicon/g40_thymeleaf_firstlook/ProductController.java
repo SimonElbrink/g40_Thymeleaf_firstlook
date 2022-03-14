@@ -32,4 +32,10 @@ public class ProductController {
         return "products";
     }
 
+    @GetMapping("/products/add")
+    public String getCreationForm(){
+        return "product-form";
+    }
+
+
 }
