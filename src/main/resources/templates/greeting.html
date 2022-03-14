@@ -6,7 +6,8 @@
 </head>
 <body>
 
-<span th:text="${text}">Hello World</span>
+<span th:text="${message}">Hello World</span>
+<span th:text="${#dates.format(serverTime, 'dd-MM-yy')}"></span>
 
 </body>
 </html>
