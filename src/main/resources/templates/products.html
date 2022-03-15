@@ -44,7 +44,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="product : ${productItems}">
+        <tr th:each="product : ${productItems}" th:if="${product.available}">
             <td th:text="${product.name}"></td>
             <td th:text="${product.price}"></td>
             <td th:text="${product.description}"></td>

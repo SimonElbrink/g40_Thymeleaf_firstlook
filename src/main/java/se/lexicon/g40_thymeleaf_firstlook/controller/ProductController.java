@@ -41,10 +41,11 @@ public class ProductController {
     @PostMapping("/products/add/process")
     public String processProductForm(
            @RequestParam(name = "name") String name,
-           @RequestParam("price") BigDecimal price,
-           @RequestParam("description") String description
+           @RequestParam(name = "price") BigDecimal price,
+           @RequestParam(name = "description") String description,
+           @RequestParam(name = "available", defaultValue = "false") Boolean available
     ){
-        Product product = new Product(UUID.randomUUID().toString(),name,description,price, true);
+        Product product = new Product(UUID.randomUUID().toString(),name,description,price, available);
         productList.add(product);
 
         return "redirect:/products";
