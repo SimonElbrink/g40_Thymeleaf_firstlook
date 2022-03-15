@@ -3,6 +3,8 @@ package se.lexicon.g40_thymeleaf_firstlook;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import se.lexicon.g40_thymeleaf_firstlook.model.Product;
 
 import java.math.BigDecimal;
@@ -26,15 +28,26 @@ public class ProductController {
     }
 
     @GetMapping("/products")
-    public String showProducts(Model model){
-
+    public String showProductsView(Model model){
         model.addAttribute("productItems", productList);
         return "products";
     }
 
     @GetMapping("/products/add")
-    public String getCreationForm(){
+    public String showProductForm(){
         return "product-form";
+    }
+
+    @PostMapping("/products/add/process")
+    public String processProductForm(
+           @RequestParam(name = "name") String name,
+           @RequestParam("price") BigDecimal price,
+           @RequestParam("description") String description
+    ){
+        Product product = new Product(UUID.randomUUID().toString(),name,description,price, true);
+        productList.add(product);
+
+        return "redirect:/products";
     }
 
 
