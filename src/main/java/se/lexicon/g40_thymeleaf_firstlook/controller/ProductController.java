@@ -1,4 +1,4 @@
-package se.lexicon.g40_thymeleaf_firstlook;
+package se.lexicon.g40_thymeleaf_firstlook.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
